@@ -1,20 +1,11 @@
-function zigzagLevelOrder(root) {
-  if (!root) return [];
-  const result = [];
-  const queue = [root];
-  let zigzag = false;
-  while (queue.length) {
-    const levelSize = queue.length;
-    const currentLevel = [];
-    for (let i = 0; i < levelSize; i++) {
-      const node = queue.shift();
-      if (zigzag) currentLevel.unshift(node.val);
-      else currentLevel.push(node.val);
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
-    }
-    result.push(currentLevel);
-    zigzag = !zigzag;
+function isPrime(n) {
+  if (n <= 1) return false;
+  if (n <= 3) return true;
+  if (n % 2 === 0 || n % 3 === 0) return false;
+  let i = 5;
+  while (i * i <= n) {
+    if (n % i === 0 || n % (i + 2) === 0) return false;
+    i += 6;
   }
-  return result;
+  return true;
 }
