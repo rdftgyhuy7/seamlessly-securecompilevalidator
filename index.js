@@ -1,12 +1,10 @@
-function moveZeroes(nums) {
-  let index = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== 0) {
-      nums[index++] = nums[i];
-    }
+function findMin(nums) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] > nums[right]) left = mid + 1;
+    else right = mid;
   }
-  for (let i = index; i < nums.length; i++) {
-    nums[i] = 0;
-  }
-  return nums;
+  return nums[left];
 }
