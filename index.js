@@ -1,10 +1,6 @@
-function findMin(nums) {
-  let left = 0;
-  let right = nums.length - 1;
-  while (left < right) {
-    const mid = Math.floor((left + right) / 2);
-    if (nums[mid] > nums[right]) left = mid + 1;
-    else right = mid;
-  }
-  return nums[left];
-}
+const pull = (arr, ...args) => {
+  let argState = Array.isArray(args[0]) ? args[0] : args;
+  let pulled = arr.filter((v, i) => !argState.includes(v));
+  arr.length = 0;
+  pulled.forEach((v) => arr.push(v));
+};
