@@ -1,6 +1,9 @@
-const pull = (arr, ...args) => {
-  let argState = Array.isArray(args[0]) ? args[0] : args;
-  let pulled = arr.filter((v, i) => !argState.includes(v));
-  arr.length = 0;
-  pulled.forEach((v) => arr.push(v));
-};
+function isSymmetric(root) {
+  if (!root) return true;
+  return isMirror(root.left, root.right);
+  function isMirror(left, right) {
+    if (!left && !right) return true;
+    if (!left || !right || left.val !== right.val) return false;
+    return isMirror(left.left, right.right) && isMirror(left.right, right.left);
+  }
+}
