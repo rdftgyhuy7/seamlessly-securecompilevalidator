@@ -1,9 +1,10 @@
-function isSymmetric(root) {
-  if (!root) return true;
-  return isMirror(root.left, root.right);
-  function isMirror(left, right) {
-    if (!left && !right) return true;
-    if (!left || !right || left.val !== right.val) return false;
-    return isMirror(left.left, right.right) && isMirror(left.right, right.left);
+function generateParenthesis(n) {
+  const result = [];
+  backtrack("", 0, 0);
+  return result;
+  function backtrack(current, open, close) {
+    if (current.length === 2 * n) result.push(current);
+    if (open < n) backtrack(current + "(", open + 1, close);
+    if (close < open) backtrack(current + ")", open, close + 1);
   }
 }
