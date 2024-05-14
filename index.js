@@ -1,5 +1,17 @@
-function sayHi() {
-  console.log("Hi!");
+function serialize(root) {
+  const result = [];
+  const queue = [root];
+  while (queue.length) {
+    const node = queue.shift();
+    if (node) {
+      result.push(node.val);
+      queue.push(node.left, node.right);
+    } else {
+      result.push(null);
+    }
+  }
+  while (result[result.length - 1] === null) {
+    result.pop();
+  }
+  return result;
 }
-
-setTimeout(sayHi, 2000); // Run sayHi after 2 seconds
